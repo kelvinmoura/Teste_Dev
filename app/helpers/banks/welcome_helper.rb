@@ -1,0 +1,2 @@
+module Banks::WelcomeHelper
+end

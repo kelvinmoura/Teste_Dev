@@ -1,0 +1,39 @@
+<div class="container">
+<h1>Extrato</h1>
+<div style="float: right;">
+<%= form_tag users_backoffice_extracts_path, method: :get do %>
+    <label for="start_date">Data inicial:</label>
+    <%= text_field_tag :start_date, params[:start_date] %>
+    <label for="end_date">Data final:</label>
+    <%= text_field_tag :end_date, params[:end_date] %>
+    <%= submit_tag "Filtrar" %>
+<% end %>
+</div>
+<table class="table table-hover" cellspacing="0" role="grid">
+        <thead >
+            <tr role="row">
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Valor da transação</th>
+                <th>Tipo de transação</th>
+                <th>Data/Hora da transação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @extracts.each do |extract| %>    
+            <tr>
+                <th><%= current_user.full_name %></th>
+                <th><%= current_user.identification %></th>
+                <% if extract.transaction_type == "Deposito" or extract.transaction_type.size > 13 %>
+                    <th style="color: green;">R$ +<%= extract.amount %></th>
+                <% else %>
+                    <th style="color: red;">R$ -<%= extract.amount %></th>
+                <% end %>
+                <th><%= extract.transaction_type %></th>
+                <th><%= extract.created_at %></th>
+            </tr> 
+            <% end %>
+        </tbody>
+</table>
+<%= paginate @extracts %>
+</div>

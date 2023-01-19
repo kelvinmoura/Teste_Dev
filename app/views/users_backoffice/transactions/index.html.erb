@@ -1,0 +1,25 @@
+<div class="container">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Transferência</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+    </div>
+    <!-- Contact Section Form-->
+    <div class="container">
+        <div class="col-lg-3 col-xl-3">
+            <%= form_with(url: users_backoffice_transfer_path, local: true) do |form| %>
+                <p>Balanço atual: <%= current_user.account.balance %></p>
+                <div class="form-floating mb-3">
+                    <%= form.label :account_number, 'Número da conta' %>
+                    <%= form.text_field :account_number %>
+                </div>
+                <div class="form-floating mb-3">
+                    <%= form.label :amount, 'Valor' %>
+                    <%= form.number_field :amount %>
+                </div>
+                <br>
+                <button class="btn btn-primary btn-xl" style="float: left;" id="submitButton" type="submit">Enviar</button>
+            <% end %>
+        </div>
+    </div>
+</div>

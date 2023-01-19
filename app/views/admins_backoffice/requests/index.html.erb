@@ -1,0 +1,26 @@
+<table class="table table-hover" cellspacing="0" role="grid">
+        <thead >
+            <tr role="row">
+                <th>Nome</th>
+                <th>CPF/CNPJ</th>
+                <th>Email</th>
+                <th>Data de nascimento</th>
+                <th>UF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>    
+            <tr>
+                <th><%= user.full_name %></th>
+                <th><%= user.identification %></th>
+                <th><%= user.email %></th>
+                <th><%= user.birth_date %></th>
+                <th><%= user.uf %></th>
+                <td>
+                    <%= link_to "Aprovado", admins_backoffice_update_status_path(user, status: 'aprovado'), class:'btn btn-primary', method: :patch %><br/>
+                    <%= link_to "Reprovado", admins_backoffice_update_status_path(user, status: 'reprovado'), class:'btn btn-primary', method: :patch %>
+                </td>
+            </tr> 
+            <% end %>
+        </tbody>
+</table>
