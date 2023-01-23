@@ -1,4 +1,4 @@
-class UsersBackoffice::DepositsController < UsersBackofficeController
+class SiteBackoffice::DepositsController < SiteBackofficeController
 
   def new
       @transaction = Transaction.new

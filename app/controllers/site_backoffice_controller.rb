@@ -1,6 +1,6 @@
-class SiteController < ApplicationController
+class SiteBackofficeController < ApplicationController
     before_action :status_check
-    layout 'site'
+    layout 'site_backoffice'
     
     private
 
@@ -9,8 +9,6 @@ class SiteController < ApplicationController
             if current_user.status == "pendente"
                 session.destroy
                 redirect_to new_user_session_path, notice: 'Sua solicitação está em analise, por favor aguarde 24hrs'
-            else
-                # layout: 'users_backoffice'
             end
         end
     end

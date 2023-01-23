@@ -1,0 +1,13 @@
+<div class="card w-50">
+  <div class="card-body">
+    <h1 class="card-title">Solicitar saldo</h1>
+    <%= form_tag site_backoffice_balance_index_path, method: :get do %>
+      <p for="agency_number">Número da agencia</p>
+      <%= text_field_tag "account[agency_number]", params[:account][:agency_number] %>
+      <p for="end_date">Número da conta</p>
+      <%= text_field_tag "account[account_number]", params[:account][:account_number] %>
+      <h2><%= @balance %></h2>
+      <%= submit_tag "Buscar" %>
+    <% end %>
+  </div>
+</div>

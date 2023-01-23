@@ -1,0 +1,22 @@
+<div class="container">
+    <!-- Contact Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Saque</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+    </div>
+    <!-- Contact Section Form-->
+    <div class="container">
+        <div class="col-lg-3 col-xl-3">
+            <p>Saldo da conta: <%= @balance %></p>
+            <p><%= notice %></p>
+            <%= form_with(url: site_backoffice_withdrawals_to_withdraw_path, method: :post, local: true) do |form| %>
+                <div class="form-floating mb-3">
+                    <%= form.label :amount, "Valor" %>
+                    <%= form.number_field :amount  %>
+                </div>
+                <br>
+                <%= submit_tag "Enviar" %>
+            <% end %>
+        </div>
+    </div>
+</div>
